@@ -175,7 +175,7 @@ export class MusicTableComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.totalLength = changes['filteredSongs'].currentValue.length;
-    // this.pageIndex = 0;
+    this.pageIndex = 0;
     this.populateSongs();
   }
 
@@ -226,21 +226,9 @@ export class MusicTableComponent implements OnInit, OnChanges {
     if(end>this.filteredSongs.length){
       end=this.filteredSongs.length;
     }
-    
-    let resultArr = this.filteredSongs.slice(
-      start,
-      end
+    const resultArr = this.filteredSongs.slice(
+      start, end
     );
-    
-    if(resultArr.length===0){
-      if(this.filteredSongs.length%this.pageSize==0)
-        this.pageIndex=0;
-      else this.pageIndex-=1;
-      resultArr = this.filteredSongs.slice(
-        this.pageIndex,
-        this.pageIndex+this.pageSize
-      );
-    }
     this.displaySongs = cloneDeep(resultArr);
     this.deleteIdList.forEach((deleteId) => {
       let found = -1;

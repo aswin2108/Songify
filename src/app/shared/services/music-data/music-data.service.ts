@@ -75,7 +75,7 @@ export class MusicDataService {
    */
   addSongEntry(data: Songs): void {
       this.convertDurationOfElement(data);
-      this.displaySongs.unshift(data);
+      this.displaySongs.push(data);
       this.saveData();
   }
 
