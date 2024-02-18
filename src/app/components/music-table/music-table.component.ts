@@ -112,6 +112,7 @@ export class MusicTableComponent implements OnInit, OnChanges {
         if(result){
           this.musicService.deleteAllSongs();
           this.resetAllSortBts('');
+          this.deleteIdList = [];
           this.dataManipulatedEmitter.emit(true);
         }
         console.log('The dialog was closed');
