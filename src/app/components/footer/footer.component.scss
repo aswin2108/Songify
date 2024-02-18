@@ -14,11 +14,14 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  height: 20vh;
+  height: 22.5vh;
 //   animation: changeHeight 10s infinite linear;
 
 }
 .fixed-footer {
     position: fixed;
     bottom: 0;
+  }
+  .gitHubSVG{
+    fill: white;
   }
