@@ -1,0 +1,50 @@
+.addPopUp {
+  width: 500px;
+  height: fit-content;
+  background-color: black;
+  border-radius: 5px;
+  padding: 20px;
+  color: white;
+  border: 1px solid rgb(112, 107, 107);
+  input{
+    background-color: rgb(43, 42, 42)
+  }
+  // label{
+  //   background-color: aquamarine !important;
+  // }
+  
+}
+.custom-container {
+  border-radius: 20px;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+}
+// input:focus + label {
+//   color: rgb(226, 10, 10);
+// }
+// .form-control{
+//   color: white;
+// } 
+// .form-control :focus.form-label{
+//   color: rgb(104, 15, 15);
+// } 
+// .form-floating {
+//   --form-floating-label-color: red;
+// } 
+
+input[_ngcontent-ng-c1915815037]{
+  color: white !important;
+}
+.duration-fixer{
+  color: white !important;
+}
+.ngx-duration-picker #dp-seconds{
+  color: white !important;
+}
+input[type=number][_ngcontent-ng-c1915815037] {
+  // -moz-appearance: textfield;
+  color: white;
+}

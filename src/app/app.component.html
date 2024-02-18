@@ -1,0 +1,8 @@
+<div class="">
+    <div class="bar-table-container p-3 pb-0">
+        <app-search-bars class="d-flex"></app-search-bars>
+        <app-music-table [filteredSongs]="filteredSongs"
+            (dataManipulatedEmitter)="getDataManipulatedStatus($event)"></app-music-table>
+    </div>
+    <app-footer></app-footer>
+</div>

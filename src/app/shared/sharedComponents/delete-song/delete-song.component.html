@@ -1,0 +1,17 @@
+<div class="deletePopUp" data-bs-theme="dark">
+    <div class="d-flex justify-content-center">
+        <h3 class="deletePopUp__TitleUncut d-flex">Delete These &nbsp;<p><del class="deletePopUp__TitleCut">Songs</del>
+            </p>...?</h3>
+    </div>
+    <div>
+        <h5><u>Song Names:</u></h5>
+    </div>
+    <ul class="songList">
+        <li *ngFor="let item of data.deleteSongName">{{item}}</li>
+    </ul>
+    <div class="btn-container">
+        <button type="button" class="btn btn-secondary" (click)="onNoClick()">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="openConfirmDialog()">Delete</button>
+    </div>
+
+</div>

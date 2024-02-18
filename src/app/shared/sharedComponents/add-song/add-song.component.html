@@ -1,0 +1,83 @@
+<div class="addPopUp">
+    <h3>
+        Add
+        <small class="text-muted">Song...?</small>
+    </h3>
+    <form [formGroup]="addForm" data-bs-theme="dark">
+        <div class="form-floating mb-3">
+            <input type="text" id="floatingInput" class="form-control" placeholder="Song ID" formControlName="id"
+                readonly>
+            <label class="form-label" for="floatingInput">Song ID</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" id="floatingInput" class="form-control" placeholder="Song Name"
+                formControlName="songName">
+            <label for="floatingInput">Song Name</label>
+            <small
+                *ngIf="addForm.get('songName').invalid && (addForm.get('songName').dirty || addForm.get('songName').touched)"
+                class="d-block link-danger">
+                <div *ngIf="addForm.get('songName').hasError('required')">Song name is required.</div>
+                <div *ngIf="addForm.get('songName').hasError('pattern')">Song name should contain characters and one dot
+                    (.) only. Starting can't be a dot.</div>
+            </small>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" id="floatingInput" class="form-control" placeholder="Artist Name"
+                formControlName="artistName">
+            <label for="floatingInput">Artist Name</label>
+            <small
+                *ngIf="addForm.get('artistName').invalid && (addForm.get('artistName').dirty || addForm.get('artistName').touched)"
+                class="d-block link-danger">
+                <div *ngIf="addForm.get('artistName').hasError('required')">Artist name is required.</div>
+                <div *ngIf="addForm.get('artistName').hasError('pattern')">Artist name should contain characters and
+                    one dot (.) only. Starting can't be a dot.</div>
+            </small>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="number" min="0" id="floatingInput" class="form-control" placeholder="Stream Count"
+                formControlName="numberOfStreams">
+            <label for="floatingInput">Stream Count</label>
+            <small
+                *ngIf="addForm.get('numberOfStreams').invalid && (addForm.get('numberOfStreams').dirty || addForm.get('numberOfStreams').touched)"
+                class="d-block link-danger">
+                <div *ngIf="addForm.get('numberOfStreams').hasError('required')">Stream Count is required.</div>
+                <div *ngIf="addForm.get('numberOfStreams').hasError('pattern')">Stream count should be a valid number.
+                </div>
+            </small>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="date" id="floatingInput" class="form-control" placeholder="Release Date"
+                formControlName="releaseYear">
+            <label for="floatingInput">Release Date</label>
+            <small
+                *ngIf="addForm.get('releaseYear').invalid && (addForm.get('releaseYear').dirty || addForm.get('releaseYear').touched)"
+                class="d-block link-danger">
+                <div *ngIf="addForm.get('releaseYear').hasError('required')">Release Year is required.</div>
+            </small>
+        </div>
+        <!-- <div class="form-floating mb-3">
+            <input type="time" id="floatingInput" class="form-control" placeholder="Duration"
+                formControlName="durationInSeconds">
+            <label for="floatingInput">Duration (seconds)</label>
+            <small
+                *ngIf="addForm.get('durationInSeconds').invalid && (addForm.get('durationInSeconds').dirty || addForm.get('durationInSeconds').touched)"
+                class="d-block link-danger">
+                <div *ngIf="addForm.get('durationInSeconds').hasError('required')">Duration is required.</div>
+                <div *ngIf="addForm.get('durationInSeconds').hasError('pattern')">Duration should be a valid number.</div>
+                <div *ngIf="addForm.get('durationInSeconds').value<61">Duration should be atleast 60sec.</div>
+            </small>
+        </div> -->
+        <div class="d-flex gap-4 justify-content-center">
+            <label class="align-self-center pt-3 fw-bold">Duration:</label>
+            <ngx-duration-picker class="duration-fixer text-white" formControlName="durationInSeconds"
+                [options]="{ customOutputFormat: 'seconds', showWeeks: false, showYears: false, showDays: false, showMonths: false, showPreview:false }"
+                (customOutput)="onOutputSeconds($event)">
+            </ngx-duration-picker>
+        </div>
+        <div class="btn-container">
+            <button type="button" class="btn btn-outline-danger" (click)="onNoClick()">Cancel</button>
+            <button type="button" class="btn btn-success" (click)="submitAddSong()"
+                [disabled]="!addForm.valid">Add</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,18 @@
+.confirmPopUp{
+    width: 350px;
+    height: fit-content;
+    background-color: black;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    border: 1px solid rgb(112, 107, 107);
+
+    .alertPopUp__TitleUncut{
+        color: red;
+    }
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}

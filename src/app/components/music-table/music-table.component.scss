@@ -1,0 +1,64 @@
+.table-container {
+  border-radius: 30px;
+}
+.columnHeader {
+  height: 8vh !important;
+  
+  &:hover {
+    .sort-btn-container {
+      visibility: visible !important;
+    }
+    .toggle-btn-container {
+      visibility: visible !important;
+    }
+  }
+}
+
+.headerColumnFixed{
+  width: 115px;
+}
+.headerColumnCenter{
+  display: flex;
+  justify-content: center !important;
+}
+
+.sort-btn-container {
+  visibility: hidden;
+  .unsort-btn {
+    display: none;
+  }
+  .ascending-btn {
+    display: none;
+  }
+  .descending-btn {
+    display: none;
+  }
+  .isActive {
+    display: block !important;
+  }
+  .sorting-btn {
+    width: 25px;
+    height: 25px;
+  }
+}
+.toggle-btn-container {
+  visibility: hidden;
+}
+.toggle-dur-btn {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+.iconSize {
+  font-size: 15px;
+}
+.tableSongName{
+  max-width: 25ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.toggleUnit{
+  // width: 20px;
+  overflow-x: hidden;
+}

@@ -1,0 +1,13 @@
+<div class="deleteAllPopUp" data-bs-theme="dark">
+    <div class="d-flex justify-content-center">
+        <h3 class="deleteAllPopUp__TitleUncut d-flex">Warning...!</h3>
+    </div>
+    <div>
+        <h5 class="text-center">This option delets all the songs in the table. This can't be undone. Want to proceed...?</h5>
+    </div>
+    <div class="btn-container">
+        <button type="button" class="btn btn-secondary" (click)="onNoClick()">Cancel</button>
+        <button type="button" class="btn btn-warning" (click)="proceedToDeleteAll()">Delete All Songs</button>
+    </div>
+
+</div>

@@ -1,0 +1,73 @@
+<div>
+  <div class="d-flex justify-content-end gap-4 pb-3">
+    <button class="btn btn-outline-primary d-flex" (click)="openAddDialog('100ms','100ms')"><span
+        class="material-symbols-outlined">
+        add_box
+      </span>&nbsp;Add Songs</button>
+      <button class="btn btn-outline-danger d-flex align-self-center" [disabled]="deleteIdList.length>5 || deleteIdList.length===0"
+        (click)="openDeleteDialog('100ms','100ms')"><span class="material-symbols-outlined align-self-center">
+          delete
+        </span>&nbsp;Delete Songs</button>
+        <button class="btn btn-outline-warning d-flex" (click)="openDeleteAllDialog()" [disabled]="displaySongs.length===0"><span
+            class="material-symbols-outlined">
+            delete_forever
+          </span>&nbsp;Delete All</button>
+      
+  </div>
+  <div *ngIf="displaySongs.length > 0" class="table-container">
+    <table class="table table-striped table-bordered table-dark mb-0 text-center">
+      <thead>
+        <tr>
+          <th *ngFor="let column of tableColumns" >
+            <div class="d-flex justify-content-between columnHeader align-items-center" [ngClass]="{'headerColumnCenter':column.propertyName===''}">
+              <div class="headerColumnContent" [ngClass]="{'headerColumnFixed':column.propertyName==='durationInSeconds'}">
+              {{ column.title }}
+              <sub *ngIf="column.propertyName==='durationInSeconds' && durationInSecStatus===true" class="m-0 toggleUnit">(sec)</sub>
+              <sub *ngIf="column.propertyName==='durationInSeconds' && durationInSecStatus===false" class="m-0">(MM:SS)</sub>
+            </div>
+            <div class="d-flex gap-2">
+              <div *ngIf="column.propertyName==='durationInSeconds'" class="toggle-btn-container">
+                <button class="btn btn-outline-warning toggle-dur-btn p-0"
+                  (click)="durationInSecStatus=!durationInSecStatus"><span class="material-symbols-outlined iconSize">
+                    swap_horiz
+                  </span></button>
+              </div>
+
+              <div class="sort-btn-container" *ngIf="column.propertyName!==''">
+                <button [ngClass]="{'isActive':column.btnStatus%3===2}"
+                  class="btn btn-outline-secondary d-none sorting-btn p-0" (click)="sortInOrder(column,2)"><span
+                    class="material-symbols-outlined iconSize">swap_vert</span></button>
+                <button [ngClass]="{'isActive':column.btnStatus%3===0}"
+                  class="btn btn-outline-success d-none sorting-btn p-0" (click)="sortInOrder(column,0)"><span
+                    class="material-symbols-outlined iconSize">arrow_downward</span></button>
+                <button [ngClass]="{'isActive':column.btnStatus%3===1}"
+                  class="btn btn-outline-danger d-none sorting-btn p-0" (click)="sortInOrder(column,1)"><span
+                    class="material-symbols-outlined iconSize">arrow_upward</span></button>
+              </div>
+            </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let song of displaySongs">
+          <td [matTooltip]="song.songName"><div class="tableSongName" >{{ song.songName }}</div></td>
+          <td>{{ song.artistName }}</td>
+          <td>{{ song.numberOfStreams }}</td>
+          <td>{{ song.releaseYear }}</td>
+          <td *ngIf="durationInSecStatus===true">{{ song.durationInSeconds }}</td>
+          <td *ngIf="durationInSecStatus===false">{{ song.durationInMMSS }}</td>
+          <td><input type="checkbox" (change)="toggleSelection(song, $event)" [checked]="song.isSelected"> </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)"
+      [length]="filteredSongs?.length ?? 0" [pageSize]="pageSize" [showFirstLastButtons]="true"
+      [pageSizeOptions]="[5,10,20,50]" [pageIndex]="pageIndex" aria-label="Select page">
+    </mat-paginator>
+  </div>
+  <div *ngIf="displaySongs.length===0" class="d-flex justify-content-center w-100">
+    <img src="./../../../assets/noData.png">
+  </div>
+</div>

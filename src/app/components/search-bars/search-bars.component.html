@@ -1,0 +1,31 @@
+<div class="d-flex mb-3">
+    <div class="d-flex text-center justify-content-start col-2">
+        <img class="logo align-self-center" src="./../../../assets/songifyLogo.png">
+        <h3 class="d-flex align-self-center logoTitle">Songify</h3>
+    </div>
+    <div class="search_bar_container d-flex ">
+        <form [formGroup]="searchForm" class="d-flex gap-3">
+            <!-- <div class="form-floating mb-3">
+            <input type="text" id="floatingInput" class="form-control" placeholder="Enter song name" size="20"
+                formControlName="songName">
+            <label for="floatingInput">Song Name Filter</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" id="floatingInput" class="form-control" placeholder="Enter artist name"
+                formControlName="artistName">
+            <label for="floatingInput">Artist Name Filter</label>
+        </div> -->
+            <mat-form-field appearance="outline">
+                <mat-label>Song Name</mat-label>
+                <input type="text" matInput formControlName="songName">
+                <mat-icon matSuffix color="accent">music_note</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Artist Name</mat-label>
+                <input type="text" matInput formControlName="artistName">
+                <mat-icon matSuffix color="accent">person</mat-icon>
+            </mat-form-field>
+
+        </form>
+    </div>
+</div>
