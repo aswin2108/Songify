@@ -84,6 +84,8 @@ export class AddSongComponent implements OnInit {
    * Function to add song into the list
    */
   submitAddSong(): void {
+    this.newSong.artistName=this.newSong.artistName.replace(/\./g, ' ');
+    this.newSong.songName=this.newSong.songName.replace(/\./g, ' ');
     this.dialogRef.close(this.newSong);
   }
 

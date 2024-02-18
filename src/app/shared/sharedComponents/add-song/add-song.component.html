@@ -74,9 +74,9 @@
                 (customOutput)="onOutputSeconds($event)">
             </ngx-duration-picker>
         </div>
-        <div class="btn-container">
+        <div class="btn-container p-2">
             <button type="button" class="btn btn-outline-danger" (click)="onNoClick()">Cancel</button>
-            <button type="button" class="btn btn-success" (click)="submitAddSong()"
+            <button type="button" class="btn btn-outline-success" (click)="submitAddSong()"
                 [disabled]="!addForm.valid">Add</button>
         </div>
     </form>

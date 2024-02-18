@@ -52,6 +52,7 @@ export class MusicTableComponent implements OnInit, OnChanges {
     dialogRef.afterClosed().subscribe((newSong) => {
       if (newSong!==undefined) {
         this.musicService.addSongEntry(newSong);
+        this.resetAllSortBts('');
         this.dataManipulatedEmitter.emit(true);
       }
       console.log('The dialog was closed');
@@ -83,6 +84,7 @@ export class MusicTableComponent implements OnInit, OnChanges {
       //If deletion occours make the delete list empty
       if (result) {
         this.musicService.deleteMarkedSongs(this.deleteIdList);
+        this.resetAllSortBts('');
         this.dataManipulatedEmitter.emit(true);
         (deleteSongList = []), (this.deleteIdList = []);
       }
@@ -109,6 +111,7 @@ export class MusicTableComponent implements OnInit, OnChanges {
       dialogRef.afterClosed().subscribe((result) => {
         if(result){
           this.musicService.deleteAllSongs();
+          this.resetAllSortBts('');
           this.dataManipulatedEmitter.emit(true);
         }
         console.log('The dialog was closed');
